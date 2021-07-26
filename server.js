@@ -2,6 +2,10 @@ const express = require('express')
 const app = express()
 // const cors = require('cors')
 // app.use(cors())
+
+const PORT = 8080;
+const HOST = '0.0.0.0';
+
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
 const { ExpressPeerServer } = require('peer');
@@ -39,4 +43,5 @@ io.on('connection', socket => {
   })
 })
 
-server.listen(process.env.PORT||3030)
+server.listen(PORT, HOST);
+console.log(`Running on http://${HOST}:${PORT}`);
